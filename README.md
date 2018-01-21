@@ -66,10 +66,13 @@ let adImageGifPath = Bundle.main.path(forResource: "adImage3", ofType: "gif") ??
 let _ = AdvertisementView.init(adUrl: adImageGifPath, isIgnoreCache: false, didClickAdViewCompletion: {})
 ```
 
-## Author
+###二、GIF演示
 
-lisilong, lisilong@tuandai.com
+#### 播放GiF资源
 
-## License
+![](https://github.com/SilongLi/AdvertisementView/raw/master/AdvertisementView/GIF/AdvertisementViewGif.gif)
 
-AdvertisementView is available under the MIT license. See the LICENSE file for more info.
+
+#### 播放图片资源
+
+![](https://github.com/SilongLi/AdvertisementView/raw/master/AdvertisementView/GIF/AdvertisementViewPng.gif)
