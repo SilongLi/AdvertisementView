@@ -6,6 +6,10 @@ App启动广告页，支持播放Gif/png/jpg等。（组件中已经监听了app
 > Swift 4.0
 > iOS 8.0
 > Xcode 9.0
+> 
+
+### 思路
+**支持播放本地与网络Gif和图片资源。如果是网络资源先下载到本地，根据资源路径命名缓存。Gif的播放使用DispatchSource创建定时器+ ImageIO框架获取帧图片。**
 
 ## 可配置接口介绍
 
@@ -70,9 +74,9 @@ let _ = AdvertisementView.init(adUrl: adImageGifPath, isIgnoreCache: false, didC
 
 #### 播放GiF资源
 
-![](https://github.com/SilongLi/AdvertisementView/raw/master/AdvertisementView/GIF/AdvertisementViewGif.gif)
+![播放Gif资源](http://upload-images.jianshu.io/upload_images/877439-622f6ac4decbc009.gif?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 
 #### 播放图片资源
 
-![](https://github.com/SilongLi/AdvertisementView/raw/master/AdvertisementView/GIF/AdvertisementViewPng.gif)
+![播放图片资源](http://upload-images.jianshu.io/upload_images/877439-39885f0571c6e3b7.gif?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
