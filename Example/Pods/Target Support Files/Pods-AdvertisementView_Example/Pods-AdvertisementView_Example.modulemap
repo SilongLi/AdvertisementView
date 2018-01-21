@@ -1,0 +1,6 @@
+framework module Pods_AdvertisementView_Example {
+  umbrella header "Pods-AdvertisementView_Example-umbrella.h"
+
+  export *
+  module * { export * }
+}

@@ -1,0 +1,6 @@
+framework module AdvertisementView {
+  umbrella header "AdvertisementView-umbrella.h"
+
+  export *
+  module * { export * }
+}
