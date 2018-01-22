@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
     s.name             = 'AdvertisementView'
-    s.version          = '1.0.0'
+    s.version          = '2.0.0'
 
     s.summary          = 'App启动广告页，支持播放Gif/png/jpg等。'
     s.homepage         = 'https://github.com/SilongLi/AdvertisementView.git'
