@@ -236,11 +236,12 @@ public class AdvertisementView: UIView {
 
     /// 点击“跳过广告”按钮事件，立即退出广告页
     @objc private func skipBtnClicked() {
-        self.removeLaunchAdViewFromSuperview(delay: 0.0)
+        removeLaunchAdViewFromSuperview(delay: 0.0)
     }
 
     /// 点击广告页事件
     @objc private func didClickAdView() {
+        skipBtnClicked()
         if self.completion != nil {
             self.completion!()
         }
