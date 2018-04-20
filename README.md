@@ -25,8 +25,8 @@ App启动广告页，支持播放Gif/png/jpg等。（组件中已经监听了app
 ///   - adUrl: 广告资源路径（本地或网络链接,使用时只传入URL即可）
 ///   - isHiddenSkipBtn: 是否隐藏跳过按钮(true 隐藏; false 不隐藏)，default: false
 ///   - isIgnoreCache: 是否忽略本地缓存(true 忽略; false 缓存)，default: true
-///   - didClickAdViewCompletion: 用户点击广告事件的回调
-convenience public init(frame: CGRect = default, duration: Int = default, delay: Double = default, adUrl: String, isHiddenSkipBtn: Bool = default, isIgnoreCache: Bool = default, didClickAdViewCompletion: @escaping () -> ())
+///   - completion: 用户点击广告事件的或公告展示完成的回调， isGotoDetailView 为ture表示点击了公告详情
+convenience public init(frame: CGRect = default, duration: Int = default, delay: Double = default, adUrl: String, isHiddenSkipBtn: Bool = default, isIgnoreCache: Bool = default, completion: @escaping (_ isGotoDetailView: Bool) -> ())
 ```
 
 ### 2.如果选择本地缓存网络资源，本地缓存清理接口
@@ -67,7 +67,9 @@ let adimageGIFUrl = "http://img.ui.cn/data/file/3/4/6/210643.gif"
 let adImageJPGPath = Bundle.main.path(forResource: "adImage2", ofType: "jpg") ?? ""
 let adImageGifPath = Bundle.main.path(forResource: "adImage3", ofType: "gif") ?? ""
 
-let _ = AdvertisementView.init(adUrl: adImageGifPath, isIgnoreCache: false, didClickAdViewCompletion: {})
+let _ = AdvertisementView(adUrl: adImageGifPath, isIgnoreCache: false, completion: { (isGotoDetailView) in
+    print(isGotoDetailView)
+})
 ```
 
 ###二、GIF演示

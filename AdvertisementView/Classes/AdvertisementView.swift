@@ -13,7 +13,6 @@ public class AdvertisementView: UIView {
     private var duration: Int = 3                       // 广告页显示时间，default: 3秒
     private var adImageUrl: String?                     // 广告页资源链接
     private var isHiddenSkipBtn: Bool = false           // 是否隐藏跳过按钮(true 隐藏; false 不隐藏)，default: false
-    private var completion: (() -> ())?                 // 用户点击广告图片的回调
     private var delayAfterTimeOut: Double = 1.0         // 广告页展示完成后的停留时间，default: 1.0秒
     private var isIgnoreCache: Bool = true              // 是否忽略本地缓存，每次都从网络下载(true 忽略; false 要缓存)，default: true
 
@@ -44,6 +43,7 @@ public class AdvertisementView: UIView {
     }()
     private var skipBtnTimer: DispatchSourceTimer?      // 跳过广告按钮定时器
     private var gifView: GifImageOperation?             // 播放gif视图
+    private var completion: ((_ isGotoDetailView: Bool) -> ())?     // 用户点击广告图片的回调
 
     // MARK: - life cycle
     private override init(frame: CGRect) {
@@ -59,14 +59,14 @@ public class AdvertisementView: UIView {
     ///   - adUrl: 广告资源路径（本地或网络链接,使用时只传入URL即可）
     ///   - isHiddenSkipBtn: 是否隐藏跳过按钮(true 隐藏; false 不隐藏)，default: false
     ///   - isIgnoreCache: 是否忽略本地缓存(true 忽略; false 缓存)，default: true
-    ///   - didClickAdViewCompletion: 用户点击广告事件的回调
+    ///   - completion: 用户点击广告事件的或公告展示完成的回调， isGotoDetailView 为ture表示点击了公告详情
     convenience public init(frame: CGRect = UIScreen.main.bounds,
                      duration: Int = 3,
                      delay: Double = 1.0,
                      adUrl: String,
                      isHiddenSkipBtn: Bool = false,
                      isIgnoreCache: Bool = true,
-                     didClickAdViewCompletion: @escaping () -> ()) {
+                     completion: @escaping (_ isGotoDetailView: Bool) -> ()) {
         self.init(frame: frame)
         self.adFrame = frame
         self.duration = duration
@@ -74,7 +74,7 @@ public class AdvertisementView: UIView {
         self.adImageUrl = adUrl
         self.isHiddenSkipBtn = isHiddenSkipBtn
         self.isIgnoreCache = isIgnoreCache
-        self.completion = didClickAdViewCompletion
+        self.completion = completion
         
         self.setupSubviews()
         self.loadDataSource()
@@ -216,6 +216,9 @@ public class AdvertisementView: UIView {
         let adDuration: Int = self.duration > 0 ? self.duration : 3
         DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(adDuration)) {
             self.removeLaunchAdViewFromSuperview(delay: self.delayAfterTimeOut)
+            if self.completion != nil {
+                self.completion!(false)
+            }
         }
     }
 
@@ -237,13 +240,16 @@ public class AdvertisementView: UIView {
     /// 点击“跳过广告”按钮事件，立即退出广告页
     @objc private func skipBtnClicked() {
         removeLaunchAdViewFromSuperview(delay: 0.0)
+        if self.completion != nil {
+            self.completion!(false)
+        }
     }
 
     /// 点击广告页事件
     @objc private func didClickAdView() {
-        skipBtnClicked()
+        removeLaunchAdViewFromSuperview(delay: 0.0)
         if self.completion != nil {
-            self.completion!()
+            self.completion!(true)
         }
     }
 
