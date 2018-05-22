@@ -200,7 +200,6 @@
 				607FACCD1AFB9204008FA782 /* Frameworks */,
 				607FACCE1AFB9204008FA782 /* Resources */,
 				B3CA099506B9A8D5903C5C83 /* [CP] Embed Pods Frameworks */,
-				A23CE64CF962037FD26AF81C /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -219,8 +218,6 @@
 				607FACE11AFB9204008FA782 /* Sources */,
 				607FACE21AFB9204008FA782 /* Frameworks */,
 				607FACE31AFB9204008FA782 /* Resources */,
-				90DA16441CC42176A4895358 /* [CP] Embed Pods Frameworks */,
-				6C42D200C283F0461FE2DB2F /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -301,51 +298,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		6C42D200C283F0461FE2DB2F /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-AdvertisementView_Tests/Pods-AdvertisementView_Tests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		90DA16441CC42176A4895358 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-AdvertisementView_Tests/Pods-AdvertisementView_Tests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		A23CE64CF962037FD26AF81C /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-AdvertisementView_Example/Pods-AdvertisementView_Example-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		B3CA099506B9A8D5903C5C83 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
