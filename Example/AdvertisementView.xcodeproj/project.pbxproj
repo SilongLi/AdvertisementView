@@ -35,7 +35,7 @@
 /* Begin PBXFileReference section */
 		15F811B20E0EF61030134968 /* Pods-AdvertisementView_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AdvertisementView_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-AdvertisementView_Example/Pods-AdvertisementView_Example.release.xcconfig"; sourceTree = "<group>"; };
 		181E185D7443B417E4C79D98 /* Pods_AdvertisementView_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AdvertisementView_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		4C87FC0DA1FF9FA1DAB8916B /* AdvertisementView.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = AdvertisementView.podspec; path = ../AdvertisementView.podspec; sourceTree = "<group>"; };
+		4C87FC0DA1FF9FA1DAB8916B /* AdvertisementView.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = AdvertisementView.podspec; path = ../AdvertisementView.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		607FACD01AFB9204008FA782 /* AdvertisementView_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AdvertisementView_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACD41AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		607FACD51AFB9204008FA782 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };

@@ -22,8 +22,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // 本地
 //        let adImageJPGPath = Bundle.main.path(forResource: "adImage2", ofType: "jpg") ?? ""
         let adImageGifPath = Bundle.main.path(forResource: "adImage3", ofType: "gif") ?? ""
-        
-        let _ = AdvertisementView(adUrl: adImageGifPath, isIgnoreCache: false, completion: { (isGotoDetailView) in
+        let _ = AdvertisementView(adUrl: adImageGifPath, isIgnoreCache: false, placeholderImage: nil, completion: { (isGotoDetailView) in
             print(isGotoDetailView)
         })
         

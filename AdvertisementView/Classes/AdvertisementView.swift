@@ -15,6 +15,7 @@ public class AdvertisementView: UIView {
     private var isHiddenSkipBtn: Bool = false           // 是否隐藏跳过按钮(true 隐藏; false 不隐藏)，default: false
     private var delayAfterTimeOut: Double = 1.0         // 广告页展示完成后的停留时间，default: 1.0秒
     private var isIgnoreCache: Bool = true              // 是否忽略本地缓存，每次都从网络下载(true 忽略; false 要缓存)，default: true
+    private var placeholderImage: UIImage?              // 在广告页未加载完之前显示的占位图
 
     private lazy var launchImageView: UIImageView = {   // APP启动图片（作用：让在加载广告页时，有个平滑的过度阶段）
         let view = UIImageView.init(frame: UIScreen.main.bounds)
@@ -59,6 +60,7 @@ public class AdvertisementView: UIView {
     ///   - adUrl: 广告资源路径（本地或网络链接,使用时只传入URL即可）
     ///   - isHiddenSkipBtn: 是否隐藏跳过按钮(true 隐藏; false 不隐藏)，default: false
     ///   - isIgnoreCache: 是否忽略本地缓存(true 忽略; false 缓存)，default: true
+    ///   - placeholderImage: 在广告页未加载完之前显示的占位图，默认显示启动图
     ///   - completion: 用户点击广告事件的或公告展示完成的回调， isGotoDetailView 为ture表示点击了公告详情
     convenience public init(frame: CGRect = UIScreen.main.bounds,
                      duration: Int = 3,
@@ -66,6 +68,7 @@ public class AdvertisementView: UIView {
                      adUrl: String,
                      isHiddenSkipBtn: Bool = false,
                      isIgnoreCache: Bool = true,
+                     placeholderImage: UIImage?,
                      completion: @escaping (_ isGotoDetailView: Bool) -> ()) {
         self.init(frame: frame)
         self.adFrame = frame
@@ -74,6 +77,7 @@ public class AdvertisementView: UIView {
         self.adImageUrl = adUrl
         self.isHiddenSkipBtn = isHiddenSkipBtn
         self.isIgnoreCache = isIgnoreCache
+        self.placeholderImage = placeholderImage
         self.completion = completion
         
         self.setupSubviews()
@@ -88,7 +92,7 @@ public class AdvertisementView: UIView {
     
     // MARK: - setup
     private func setupSubviews() {
-        launchImageView.image = self.loadLaunchImage()
+        launchImageView.image = (placeholderImage != nil) ? placeholderImage : loadLaunchImage()
         self.addSubview(launchImageView)
 
         adImageView.frame = self.adFrame

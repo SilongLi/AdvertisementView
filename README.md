@@ -11,6 +11,9 @@ App启动广告页，支持播放Gif/png/jpg等。（组件中已经监听了app
 ### 思路
 **支持播放本地与网络Gif和图片资源。如果是网络资源先下载到本地，根据资源路径命名缓存。Gif的播放使用DispatchSource创建定时器+ ImageIO框架获取帧图片。**
 
+### **最新修改**
+-  添加在广告页未加载完之前显示的占位图参数：placeholderImage，默认显示启动图
+
 ## 可配置接口介绍
 
 ### 1.实例化接口及可配置参数
@@ -25,8 +28,9 @@ App启动广告页，支持播放Gif/png/jpg等。（组件中已经监听了app
 ///   - adUrl: 广告资源路径（本地或网络链接,使用时只传入URL即可）
 ///   - isHiddenSkipBtn: 是否隐藏跳过按钮(true 隐藏; false 不隐藏)，default: false
 ///   - isIgnoreCache: 是否忽略本地缓存(true 忽略; false 缓存)，default: true
+///   - placeholderImage: 在广告页未加载完之前显示的占位图，默认显示启动图
 ///   - completion: 用户点击广告事件的或公告展示完成的回调， isGotoDetailView 为ture表示点击了公告详情
-convenience public init(frame: CGRect = default, duration: Int = default, delay: Double = default, adUrl: String, isHiddenSkipBtn: Bool = default, isIgnoreCache: Bool = default, completion: @escaping (_ isGotoDetailView: Bool) -> ())
+convenience public init(frame: CGRect = default, duration: Int = default, delay: Double = default, adUrl: String, isHiddenSkipBtn: Bool = default, isIgnoreCache: Bool = default, placeholderImage: UIImage?, completion: @escaping (_ isGotoDetailView: Bool) -> ())
 ```
 
 ### 2.如果选择本地缓存网络资源，本地缓存清理接口
