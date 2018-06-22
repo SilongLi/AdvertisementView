@@ -8,6 +8,8 @@
 
 import UIKit
 
+private let kPlaceholderViewTag = 20180622
+
 public class AdvertisementView: UIView {
     private var adFrame: CGRect = UIScreen.main.bounds  // 广告页显示大小
     private var duration: Int = 3                       // 广告页显示时间，default: 3秒
@@ -20,6 +22,12 @@ public class AdvertisementView: UIView {
     private lazy var launchImageView: UIImageView = {   // APP启动图片（作用：让在加载广告页时，有个平滑的过度阶段）
         let view = UIImageView.init(frame: UIScreen.main.bounds)
         view.backgroundColor = UIColor.white
+        return view
+    }()
+    private lazy var placeholderView: UIImageView = {   // 显示APP启动图片（作用：让在加载广告页时，有个平滑的过度阶段）
+        let view = UIImageView.init(frame: UIScreen.main.bounds)
+        view.backgroundColor = UIColor.white
+        view.tag = kPlaceholderViewTag
         return view
     }()
     private lazy var adImageView: UIImageView = {       // APP广告图片
@@ -93,6 +101,7 @@ public class AdvertisementView: UIView {
     // MARK: - setup
     private func setupSubviews() {
         launchImageView.image = (placeholderImage != nil) ? placeholderImage : loadLaunchImage()
+        placeholderView.image = loadLaunchImage()
         self.addSubview(launchImageView)
 
         adImageView.frame = self.adFrame
@@ -261,10 +270,24 @@ public class AdvertisementView: UIView {
     /// 当接收到 UIApplicationDidFinishLaunching 通知后，添加到 keyWindow 上
     private func addLaunchAdViewToWindow() {
         NotificationCenter.default.addObserver(forName: .UIApplicationDidFinishLaunching, object: nil, queue: nil) { [weak self] (_) in
-            DispatchQueue.main.async {
-                guard self != nil else { return }
-                UIApplication.shared.keyWindow?.addSubview(self!)
+            if let rootVC = UIApplication.shared.keyWindow?.rootViewController, let placeholderView = self?.placeholderView {
+                rootVC.view.addSubview(placeholderView)
             }
+            DispatchQueue.main.async {
+                guard self != nil else {
+                    AdvertisementView.placeholderViewRemoveFromSuperview()
+                    return
+                }
+                UIApplication.shared.keyWindow?.addSubview(self!)
+                AdvertisementView.placeholderViewRemoveFromSuperview()
+            }
+        }
+    }
+    
+    private static func placeholderViewRemoveFromSuperview() {
+        if let rootVC = UIApplication.shared.keyWindow?.rootViewController,
+            let placeholderView = rootVC.view.viewWithTag(kPlaceholderViewTag) {
+            placeholderView.removeFromSuperview()
         }
     }
 }
