@@ -42,12 +42,12 @@ public class AdvertisementView: UIView {
         btn.backgroundColor = UIColor.init(red: 0.0, green: 0.0, blue: 0.0, alpha: 0.4)
         btn.layer.cornerRadius = 5.0
         btn.layer.masksToBounds = true
-        btn.setTitle("跳过广告", for: .normal)
+        btn.setTitle("跳过广告", for: UIControl.State.normal)
         btn.titleLabel?.font = UIFont.systemFont(ofSize: 12)
         btn.titleLabel?.textColor = UIColor.white
         btn.titleLabel?.sizeToFit()
         btn.isHidden = true
-        btn.addTarget(self, action: #selector(skipBtnClicked), for: .touchUpInside)
+        btn.addTarget(self, action: #selector(skipBtnClicked), for: UIControl.Event.touchUpInside)
         return btn
     }()
     private var skipBtnTimer: DispatchSourceTimer?      // 跳过广告按钮定时器
@@ -109,7 +109,7 @@ public class AdvertisementView: UIView {
 
         skipButton.frame = CGRect.init(x: UIScreen.main.bounds.size.width - 80.0 , y: 30.0, width: 70.0, height: 26.0)
         let adDuration = self.duration > 0 ? self.duration : 3
-        skipButton.setTitle("跳过广告\(adDuration)", for: .normal)
+        skipButton.setTitle("跳过广告\(adDuration)", for: UIControl.State.normal)
         self.addSubview(skipButton)
 
         // "跳过广告"按钮定时器
@@ -120,8 +120,8 @@ public class AdvertisementView: UIView {
             DispatchQueue.main.async {
                 let title = "跳过广告\(self?.duration ?? 0)"
                 let strTitle: NSMutableAttributedString = NSMutableAttributedString.init(string: title)
-                strTitle.addAttribute(NSAttributedStringKey.font, value: UIFont.systemFont(ofSize: 14), range: NSRange.init(location: 4, length: title.count - 4))
-                self?.skipButton.setAttributedTitle(strTitle, for: .normal)
+                strTitle.addAttribute(NSAttributedString.Key.font, value: UIFont.systemFont(ofSize: 14), range: NSRange.init(location: 4, length: title.count - 4))
+                self?.skipButton.setAttributedTitle(strTitle, for: UIControl.State.normal)
                 self?.duration -= 1
                 if self?.duration ?? 0 < 0 {
                     self?.skipBtnTimer?.cancel()
@@ -189,7 +189,7 @@ public class AdvertisementView: UIView {
             return nil
         }
         for dict: Dictionary <String, String> in imagesInfoArray as! Array {
-            let imageSize = CGSizeFromString(dict["UILaunchImageSize"]!)
+            let imageSize = NSCoder.cgSize(for: dict["UILaunchImageSize"]!)
             if imageSize.equalTo(viewSize) && viewOrientation == dict["UILaunchImageOrientation"]! as String {
                 imageName = UIImage(named: dict["UILaunchImageName"]!)
             }
@@ -239,14 +239,14 @@ public class AdvertisementView: UIView {
     ///
     /// - Parameter delay: 界面停留时间
     private func removeLaunchAdViewFromSuperview(delay: Double) {
-        UIView.animate(withDuration: 0.5, delay: delay, options: UIViewAnimationOptions.curveEaseOut, animations: {
+        UIView.animate(withDuration: 0.5, delay: delay, options: UIView.AnimationOptions.curveEaseOut, animations: {
             self.transform = CGAffineTransform.init(scaleX: 1.2, y: 1.2)
             self.alpha = 0.0
         }) { (_) in
             self.skipBtnTimer?.cancel()
             self.gifView?.cancelAnimation()
             self.removeFromSuperview()
-            NotificationCenter.default.removeObserver(self, name: .UIApplicationDidFinishLaunching, object: nil)
+            NotificationCenter.default.removeObserver(self, name: UIApplication.didFinishLaunchingNotification, object: nil)
         }
     }
 
@@ -269,7 +269,7 @@ public class AdvertisementView: UIView {
     // MARK: - 当App启动完成后，添加到主window中显示
     /// 当接收到 UIApplicationDidFinishLaunching 通知后，添加到 keyWindow 上
     private func addLaunchAdViewToWindow() {
-        NotificationCenter.default.addObserver(forName: .UIApplicationDidFinishLaunching, object: nil, queue: nil) { [weak self] (_) in
+        NotificationCenter.default.addObserver(forName: UIApplication.didFinishLaunchingNotification, object: nil, queue: nil) { [weak self] (_) in
             if let rootVC = UIApplication.shared.keyWindow?.rootViewController, let placeholderView = self?.placeholderView {
                 rootVC.view.addSubview(placeholderView)
             }

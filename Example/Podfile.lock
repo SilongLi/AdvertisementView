@@ -1,5 +1,5 @@
 PODS:
-  - AdvertisementView (2.0.0)
+  - AdvertisementView (2.1.0)
 
 DEPENDENCIES:
   - AdvertisementView (from `../`)
@@ -9,8 +9,8 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  AdvertisementView: 5b11b181380ac5961d08aa3431bda474443f571b
+  AdvertisementView: 8a7f4a620be339684c4b9eef9837a54100c15475
 
 PODFILE CHECKSUM: b5d5aed8af2cafdd1a4c3b6c039c856f0197fdd2
 
-COCOAPODS: 1.5.0
+COCOAPODS: 1.5.3

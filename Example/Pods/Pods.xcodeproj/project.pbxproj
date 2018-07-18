@@ -394,39 +394,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		12F14F0D1F721F06E38D31D77EA3CA2E /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5F41A741D84994393974B46AD94FA3C6 /* AdvertisementView.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				GCC_PREFIX_HEADER = "Target Support Files/AdvertisementView/AdvertisementView-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/AdvertisementView/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/AdvertisementView/AdvertisementView.modulemap";
-				PRODUCT_MODULE_NAME = AdvertisementView;
-				PRODUCT_NAME = AdvertisementView;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
-				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
 		13C5DE8093CF5CAFB24813755B9F47A6 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 88FB9B579EBAD4CB3F2E9C2E6AD84B25 /* Pods-AdvertisementView_Tests.debug.xcconfig */;
@@ -523,38 +490,6 @@
 			};
 			name = Debug;
 		};
-		2E91E984800761FF1B9E979AF4AACA9B /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5F41A741D84994393974B46AD94FA3C6 /* AdvertisementView.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				GCC_PREFIX_HEADER = "Target Support Files/AdvertisementView/AdvertisementView-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/AdvertisementView/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/AdvertisementView/AdvertisementView.modulemap";
-				PRODUCT_MODULE_NAME = AdvertisementView;
-				PRODUCT_NAME = AdvertisementView;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
 		3062401907915BE5F9D077E41E7E2677 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = E5D84258E276FE7E86175331D104B4B5 /* Pods-AdvertisementView_Example.debug.xcconfig */;
@@ -590,6 +525,39 @@
 			};
 			name = Debug;
 		};
+		54A92BDF829614909259616A1E1F68C4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5F41A741D84994393974B46AD94FA3C6 /* AdvertisementView.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/AdvertisementView/AdvertisementView-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/AdvertisementView/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/AdvertisementView/AdvertisementView.modulemap";
+				PRODUCT_MODULE_NAME = AdvertisementView;
+				PRODUCT_NAME = AdvertisementView;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
 		64913BF4A4D2E2E62A14A6F7B42DA2B4 /* Release */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = F8E56AF1D12466F66EBA60C8098BB2AF /* Pods-AdvertisementView_Tests.release.xcconfig */;
@@ -623,6 +591,38 @@
 				VERSION_INFO_PREFIX = "";
 			};
 			name = Release;
+		};
+		AEDD7C7E25F61BD2124A808F12D435C6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5F41A741D84994393974B46AD94FA3C6 /* AdvertisementView.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/AdvertisementView/AdvertisementView-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/AdvertisementView/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/AdvertisementView/AdvertisementView.modulemap";
+				PRODUCT_MODULE_NAME = AdvertisementView;
+				PRODUCT_NAME = AdvertisementView;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
 		};
 		D56BF43C6AEC4D3383A234E2A71411ED /* Release */ = {
 			isa = XCBuildConfiguration;
@@ -741,8 +741,8 @@
 		C4E489E370A25782A9EBDC0887A2303F /* Build configuration list for PBXNativeTarget "AdvertisementView" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				2E91E984800761FF1B9E979AF4AACA9B /* Debug */,
-				12F14F0D1F721F06E38D31D77EA3CA2E /* Release */,
+				AEDD7C7E25F61BD2124A808F12D435C6 /* Debug */,
+				54A92BDF829614909259616A1E1F68C4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

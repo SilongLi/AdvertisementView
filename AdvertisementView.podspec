@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
     s.name             = 'AdvertisementView'
-    s.version          = '2.0.2'
+    s.version          = '2.1.0'
 
     s.summary          = 'App启动广告页，支持播放Gif/png/jpg等。'
     s.homepage         = 'https://github.com/SilongLi/AdvertisementView.git'
@@ -15,7 +15,7 @@ Pod::Spec.new do |s|
 
     s.requires_arc = true
     s.ios.deployment_target = '8.0'
-    s.pod_target_xcconfig = { 'SWIFT_VERSION' => '4.0' }
+    s.pod_target_xcconfig = { 'SWIFT_VERSION' => '4.2' }
     s.frameworks = 'Foundation', 'UIKit'
 # s.xcconfig = { "HEADER_SEARCH_PATHS" => "$(SDKROOT)/usr/include/CommonCrypto" }
 end

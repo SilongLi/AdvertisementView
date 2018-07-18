@@ -3,15 +3,17 @@
 App启动广告页，支持播放Gif/png/jpg等。（组件中已经监听了app的 UIApplicationDidFinishLaunching 通知，通知来了会把广告页添加到keyWindow中，使用者只需要创建即可。）
 
 
-> Swift 4.0
+> Swift 4.2
 > iOS 8.0
-> Xcode 9.0
+> Xcode 10.0
 > 
 
 ### 思路
 **支持播放本地与网络Gif和图片资源。如果是网络资源先下载到本地，根据资源路径命名缓存。Gif的播放使用DispatchSource创建定时器+ ImageIO框架获取帧图片。**
 
 ### **版本迭代**
+- 2.1.0
+    -  升级到Swift 4.2
 - 2.0.2
     -  修复显示广告页之前，闪现首页界面的问题
 - 2.0.1

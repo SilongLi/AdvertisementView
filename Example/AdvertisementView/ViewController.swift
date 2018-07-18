@@ -13,10 +13,9 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        let imageView = UIImageView.init(image: UIImage.init(named: "view_bg_image.png"))
-//        imageView.frame = self.view.bounds
-//        self.view.addSubview(imageView)
-        view.backgroundColor = .red
+        let imageView = UIImageView.init(image: UIImage.init(named: "view_bg_image.png"))
+        imageView.frame = self.view.bounds
+        self.view.addSubview(imageView)
     }
 
     override func didReceiveMemoryWarning() {
