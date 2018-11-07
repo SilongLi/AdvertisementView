@@ -20,26 +20,26 @@ public class AdvertisementView: UIView {
     private var placeholderImage: UIImage?              // 在广告页未加载完之前显示的占位图
 
     private lazy var launchImageView: UIImageView = {   // APP启动图片（作用：让在加载广告页时，有个平滑的过度阶段）
-        let view = UIImageView.init(frame: UIScreen.main.bounds)
+        let view = UIImageView(frame: UIScreen.main.bounds)
         view.backgroundColor = UIColor.white
         return view
     }()
     private lazy var placeholderView: UIImageView = {   // 显示APP启动图片（作用：让在加载广告页时，有个平滑的过度阶段）
-        let view = UIImageView.init(frame: UIScreen.main.bounds)
+        let view = UIImageView(frame: UIScreen.main.bounds)
         view.backgroundColor = UIColor.white
         view.tag = kPlaceholderViewTag
         return view
     }()
     private lazy var adImageView: UIImageView = {       // APP广告图片
-        let adImageView = UIImageView.init(frame: UIScreen.main.bounds)
+        let adImageView = UIImageView(frame: UIScreen.main.bounds)
         adImageView.isUserInteractionEnabled = true
         adImageView.alpha = 0
-        adImageView.addGestureRecognizer(UITapGestureRecognizer.init(target: self, action: #selector(didClickAdView)))
+        adImageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(didClickAdView)))
         return adImageView
     }()
     private lazy var skipButton: UIButton = {           // 跳过按钮
-        let btn = UIButton.init(type: .custom)
-        btn.backgroundColor = UIColor.init(red: 0.0, green: 0.0, blue: 0.0, alpha: 0.4)
+        let btn = UIButton(type: .custom)
+        btn.backgroundColor = UIColor(red: 0.0, green: 0.0, blue: 0.0, alpha: 0.4)
         btn.layer.cornerRadius = 5.0
         btn.layer.masksToBounds = true
         btn.setTitle("跳过广告", for: UIControl.State.normal)
@@ -107,7 +107,7 @@ public class AdvertisementView: UIView {
         adImageView.frame = self.adFrame
         self.addSubview(adImageView)
 
-        skipButton.frame = CGRect.init(x: UIScreen.main.bounds.size.width - 80.0 , y: 30.0, width: 70.0, height: 26.0)
+        skipButton.frame = CGRect(x: UIScreen.main.bounds.size.width - 90.0 , y: 40.0, width: 70.0, height: 26.0)
         let adDuration = self.duration > 0 ? self.duration : 3
         skipButton.setTitle("跳过广告\(adDuration)", for: UIControl.State.normal)
         self.addSubview(skipButton)
@@ -119,8 +119,8 @@ public class AdvertisementView: UIView {
         skipBtnTimer?.setEventHandler(handler: { [weak self] in
             DispatchQueue.main.async {
                 let title = "跳过广告\(self?.duration ?? 0)"
-                let strTitle: NSMutableAttributedString = NSMutableAttributedString.init(string: title)
-                strTitle.addAttribute(NSAttributedString.Key.font, value: UIFont.systemFont(ofSize: 14), range: NSRange.init(location: 4, length: title.count - 4))
+                let strTitle: NSMutableAttributedString = NSMutableAttributedString(string: title)
+                strTitle.addAttribute(NSAttributedString.Key.font, value: UIFont.systemFont(ofSize: 14), range: NSRange(location: 4, length: title.count - 4))
                 self?.skipButton.setAttributedTitle(strTitle, for: UIControl.State.normal)
                 self?.duration -= 1
                 if self?.duration ?? 0 < 0 {
@@ -140,15 +140,15 @@ public class AdvertisementView: UIView {
         if self.checkUrlIsNetWorkData(urlString: adUrl) {   // 网络资源
             data = self.getAdData(url: adUrl)
         } else {                                            // 本地资源
-            data = try? NSData.init(contentsOfFile: adUrl) as Data
+            data = try? NSData(contentsOfFile: adUrl) as Data
         }
         guard let imageData = data else { return }
         let type = GifImageOperation.checkDataType(data: imageData)
         if type == .gif {
-            gifView = GifImageOperation.init(frame: adImageView.frame, gifData: imageData)
+            gifView = GifImageOperation(frame: adImageView.frame, gifData: imageData)
             adImageView.addSubview(gifView!)
         } else {
-            adImageView.image = UIImage.init(data: imageData)
+            adImageView.image = UIImage(data: imageData)
         }
     }
 
@@ -158,7 +158,7 @@ public class AdvertisementView: UIView {
     /// - Returns: 广告资源
     private func getAdData(url: String) -> Data? {
         if isIgnoreCache {  // 忽略缓存
-            return try? Data.init(contentsOf: URL.init(string: url)!)
+            return try? Data(contentsOf: URL(string: url)!)
         } else {            // 先从本地缓存中获取，获取不到网络下载
             var adData: Data? = AdvertisementView.getAdDataFromLocal(url)
             if adData == nil {
@@ -169,7 +169,7 @@ public class AdvertisementView: UIView {
                     }
                 }
                 // 下载并缓存
-                adData = try? Data.init(contentsOf: URL.init(string: url)!)
+                adData = try? Data(contentsOf: URL(string: url)!)
                 let _ = AdvertisementView.saveDataToLocal(url, data: adData)
             }
             return adData
@@ -206,7 +206,7 @@ public class AdvertisementView: UIView {
     private func checkUrlIsNetWorkData(urlString: String?) -> Bool {
         guard urlString != nil else { return false }
         let regex = "http(s)?:\\/\\/([\\w-]+\\.)+[\\w-]+(\\/[\\w- .\\/?%&=]*)?"
-        let predicate = NSPredicate.init(format: "SELF MATCHES %@", regex)
+        let predicate = NSPredicate(format: "SELF MATCHES %@", regex)
         return predicate.evaluate(with:urlString)
     }
 
@@ -240,7 +240,7 @@ public class AdvertisementView: UIView {
     /// - Parameter delay: 界面停留时间
     private func removeLaunchAdViewFromSuperview(delay: Double) {
         UIView.animate(withDuration: 0.5, delay: delay, options: UIView.AnimationOptions.curveEaseOut, animations: {
-            self.transform = CGAffineTransform.init(scaleX: 1.2, y: 1.2)
+            self.transform = CGAffineTransform(scaleX: 1.2, y: 1.2)
             self.alpha = 0.0
         }) { (_) in
             self.skipBtnTimer?.cancel()
@@ -330,7 +330,7 @@ extension AdvertisementView {
         }
         if FileManager.default.fileExists(atPath: filePath) {
             do {
-                try FileManager.default.removeItem(at: URL.init(fileURLWithPath: filePath))
+                try FileManager.default.removeItem(at: URL(fileURLWithPath: filePath))
             } catch {
                 print(error)
                 return false
@@ -348,7 +348,7 @@ extension AdvertisementView {
         }
         if FileManager.default.fileExists(atPath: filePath) {
             do {
-                try FileManager.default.removeItem(at: URL.init(fileURLWithPath: filePath))
+                try FileManager.default.removeItem(at: URL(fileURLWithPath: filePath))
             } catch {
                 print(error)
                 return false
