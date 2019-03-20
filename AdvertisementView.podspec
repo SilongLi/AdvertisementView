@@ -5,7 +5,7 @@ Pod::Spec.new do |s|
     s.summary          = 'App启动广告页，支持播放Gif/png/jpg等。'
     s.homepage         = 'https://github.com/SilongLi/AdvertisementView.git'
     s.license          = { :type => 'MIT', :file => 'LICENSE' }
-    s.author           = { 'lisilong' => 'lisilong@tuandai.com' }
+    s.author           = { 'lisilong' => 'lisilongios@163.com' }
     s.source           = { :git => 'https://github.com/SilongLi/AdvertisementView.git', :tag => s.version.to_s }
     s.source_files     = 'AdvertisementView/Classes/**/*'
 
